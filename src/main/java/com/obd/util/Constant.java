@@ -1,15 +1,15 @@
 package com.obd.util;
 
 public class Constant {
-	public static final String miaolian = "129.211.96.209";
+	public static final String miaolian = "111.111.111.111";
 	public static final String localhost = "localhost";
 	
 	public static final String thingsboard_tele = "http://localhost:8080/api/v1/";
 
  /***********************************************OBD中心平台******************************************************/
 //    IP:port for OBD center platform 正式80，测试8080
-//    public static String OBD_URL = "http://218.108.60.68:8080";
-    public static String OBD_URL = "http://218.108.60.68";
+//    public static String OBD_URL = "http://222.222.222.222:8080";
+    public static String OBD_URL = "http://222.222.222.222";
     /*
      * API for OBD
      */
@@ -22,14 +22,14 @@ public class Constant {
     /*
      * for OBD center platform
      */
-    public static final String jkYhm = "3301070000";
-    public static final String jkSqm = "330107jm";
-    public static final String cnbh = "330107";
+    public static final String jkYhm = "******";
+    public static final String jkSqm = "****";
+    public static final String cnbh = "*******";
     
     /*
      * key for AES encode
      */
-    public static final String AES_KEY = "XX7XXXQXJMKJYXGS";
+    public static final String AES_KEY = "***********";
    
     /*
      * OBD交换码，exchangeType
