@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.obd.dao.VehicleDao">
+
+	<insert id="insertVehicle">
+		<!-- 主键冲突报错 用ignore忽略，返回0 -->
+		insert into
+		vehicle(id,name,node_id,clxh,clpp,hpzl,clsbhm,fdjh,ccdjrq,syr,lxdh,sbbh,xsdw,scrq,auth_time)
+		values
+		(#{id},#{name},#{node_id},#{CLXH},#{CLPP},#{HPZL},#{CLSBHM},#{FDJH},#{CCDJRQ},#{SYR},#{LXDH},#{SBBH},#{XSDW},#{SCRQ},#{OBDauth})
+	</insert>
+
+
+	<select id="queryVehicleByVIN" resultType="Vehicle">
+		<!-- 根据clsbhm吗查询vehicle实体 -->
+		select * from vehicle
+		where sbbh=#{SBBH}
+	</select>
+
+	<insert id="insertDeviceWithEntity">
+		<!-- 主键冲突报错 用ignore忽略，返回0 -->
+		insert into
+		vehicle(id,name,node_id,clxh,clpp,hpzl,clsbhm,fdjh,ccdjrq,syr,lxdh,sbbh,xsdw,scrq,auth_time)
+		values
+		(#{id},#{name},#{node_id},#{CLXH},#{CLPP},#{HPZL},#{CLSBHM},#{FDJH},#{CCDJRQ},#{SYR},#{LXDH},#{SBBH},#{XSDW},#{SCRQ},#{OBDauth})
+	</insert>
+
+	<insert id="updateVehicleICC">
+		UPDATE vehicle
+		SET iccid = #{iccid}
+		WHERE clsbhm=#{clsbhm}
+	</insert>
+
+</mapper>

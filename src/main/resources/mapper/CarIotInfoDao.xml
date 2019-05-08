@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.obd.dao.CarIotInfoDao">
+
+	<!-- 根据车架号查最新数据列表最新10条 -->
+	<select id="queryDataInfo" resultType="CarIotInfo">
+		select 
+		info.id,
+		info.vin,
+		info.gmt_create,
+		info.device_status,
+		info.content,
+		info.obd_response_id,
+		res.request_time "carIotResponse.request_time",
+		res.code "carIotResponse.code",
+		res.message "carIotResponse.message",
+		res.version "carIotResponse.version"
+		from t_car_iot_info info
+		inner join t_obd_response res on info.obd_response_id=res.id
+		where info.vin=#{clsbhm} and info.obd_response_id is not null
+		order by info.gmt_create desc
+		limit 10
+	</select>
+	
+	<!-- 根据车架号和limit查一定数量的 -->
+	<select id="queryLimitedDataInfo" resultType="CarIotInfo">
+		select 
+		info.vin,
+		info.gmt_create,
+		info.device_status,
+		info.content,
+		info.obd_response_id,
+		res.request_time "carIotResponse.request_time",
+		res.code "carIotResponse.code",
+		res.message "carIotResponse.message",
+		res.version "carIotResponse.version"
+		from t_car_iot_info info
+		inner join t_obd_response res on info.obd_response_id=res.id
+		where info.vin=#{clsbhm} and info.obd_response_id is not null
+		order by info.gmt_create desc
+		limit #{limit}
+	</select>
+</mapper>
